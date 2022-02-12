@@ -15,13 +15,13 @@ const updateUserPoint = async (req, res) => {
         await user.save()
 
         const transaction = new Transaction()
+        transaction.point = point
+        transaction.recyclingCenterId = req.body.recyclingCenterId
+        transaction.userId = id
+        transaction.wasteType = req.body.wasteType
+        await transaction.save()
 
-
-        if (user) {
-            return res.status(http.UPDATED).json(customResponse(true, null, null))
-        } else {
-            return res.status(http.BAD_REQUEST).json(customResponse(false, messages.ERROR.general_error_message, null))
-        }
+        return res.status(http.UPDATED).json(customResponse(true, null, null))
 
     } catch (error) {
         return res.status(http.INTERNAL_SERVER).json(customResponse(false, messages.SERVER_ERRORS.internal_server_error, null))
