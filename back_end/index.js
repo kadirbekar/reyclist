@@ -6,7 +6,10 @@ app.use(express.json());
 require('./database/mongoose')
 
 const authenticationRouter = require('./routers/authentication_router')
+const userRouter = require('./routers/user_router')
+
 app.use('/api/authentication', authenticationRouter)
+app.use('/api/user', userRouter)
 
 app.use('/apiTest', (req, res) => {
     return res.status(201).json({
