@@ -3,7 +3,7 @@ import 'package:reyclist_mobil/core/init/design/color.dart';
 import 'package:reyclist_mobil/core/init/design/text_style.dart';
 
 import '../../../core/widgets/logo/logo.dart';
-import 'signForm.dart';
+import 'sign_form.dart';
 import 'no_account_text.dart';
 
 class LoginView extends StatelessWidget {
