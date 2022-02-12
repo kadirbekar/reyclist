@@ -5,7 +5,8 @@ import 'package:reyclist_mobil/core/widgets/inputs/form_input.dart';
 import 'package:reyclist_mobil/core/widgets/text/have_account.dart';
 
 import '../../core/constants/icon_constants.dart';
-import '../../core/constants/widget_size_constants.dart';
+
+import '../../core/constants/widget_size_constant.dart';
 import '../../core/mixin/form_validation_mixin.dart';
 
 class ForgotPasswordView extends StatefulWidget {

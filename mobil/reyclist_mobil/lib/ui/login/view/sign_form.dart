@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:reyclist_mobil/core/constants/icon_constants.dart';
+import 'package:reyclist_mobil/core/constants/widget_size_constant.dart';
 import 'package:reyclist_mobil/core/mixin/form_validation_mixin.dart';
 import 'package:reyclist_mobil/core/widgets/button/box_button.dart';
 import 'package:reyclist_mobil/core/widgets/inputs/form_input.dart';
 import 'package:kartal/kartal.dart';
-import 'package:reyclist_mobil/ui/forgot_password/forgot_password_view.dart';
 
-import '../../../core/constants/widget_size_constants.dart';
+import '../../forgot_passworld/forgot_passworld_view.dart';
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);

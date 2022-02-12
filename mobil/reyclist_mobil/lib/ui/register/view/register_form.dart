@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:reyclist_mobil/core/constants/icon_constants.dart';
+import 'package:reyclist_mobil/core/constants/widget_size_constant.dart';
 
 import 'package:reyclist_mobil/core/mixin/form_validation_mixin.dart';
 
-import '../../../core/constants/widget_size_constants.dart';
 import '../../../core/mixin/form_validation_mixin.dart';
 import '../../../core/widgets/button/box_button.dart';
 import '../../../core/widgets/circle_avatar_icon/circle_avatar_icon.dart';

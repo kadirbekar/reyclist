@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:reyclist_mobil/core/init/design/color.dart';
 
 class BoxInputField extends StatelessWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String placeholder;
   final Widget? leading;
   final Widget? trailing;
   final bool password;
   final void Function()? trailingTapped;
+  final String? Function(String?)? validator;
 
   final circularBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(8),
@@ -21,17 +22,19 @@ class BoxInputField extends StatelessWidget {
     this.trailing,
     this.trailingTapped,
     this.password = false,
+    this.validator,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
       style: const TextStyle(height: 1),
       obscureText: password,
       decoration: InputDecoration(
         hintText: placeholder,
-        contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         filled: true,
         fillColor: kcVeryLightGreyColor,
         prefixIcon: leading,
@@ -54,6 +57,7 @@ class BoxInputField extends StatelessWidget {
           borderSide: const BorderSide(color: kcLightGreyColor),
         ),
       ),
+      validator: validator,
     );
   }
 }
