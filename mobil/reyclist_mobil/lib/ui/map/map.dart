@@ -21,32 +21,31 @@ class _mapPageState extends State<mapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Stack(
-        children: [
-          GoogleMap(
-            onMapCreated: _onMapCreated,
-            initialCameraPosition: CameraPosition(target: _center),
-            onTap: (position) {
-              _showInformationCard(context);
-            },
-          ),
-        ],
-      )),
-      bottomNavigationBar: CurvedNavigationBar(
-        height: 60.0,
-        items: <Icon>[
-          Icon(Icons.home, size: 30),
-          Icon(Icons.map, size: 30),
-          Icon(Icons.qr_code, size: 30),
-        ],
-        color: Colors.white,
-        buttonBackgroundColor: Colors.white,
-        backgroundColor: Colors.orange,
-        animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 600),
-      ),
-    );
+        body: SafeArea(
+            child: Stack(
+          children: [
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(target: _center),
+              onTap: (position) {
+                _showInformationCard(context);
+              },
+            ),
+          ],
+        )),
+        bottomNavigationBar: CurvedNavigationBar(
+          height: 60.0,
+          items: <Icon>[
+            Icon(Icons.home, size: 30),
+            Icon(Icons.map, size: 30),
+            Icon(Icons.qr_code, size: 30),
+          ],
+          color: Colors.white,
+          buttonBackgroundColor: Colors.white,
+          backgroundColor: Colors.orange,
+          animationCurve: Curves.easeInOut,
+          animationDuration: Duration(milliseconds: 600),
+        ));
   }
 
   Future<dynamic> _showInformationCard(BuildContext context) {
