@@ -1,3 +1,4 @@
+require('dotenv').config()
 const messages = require('../constants/message_constants')
 const nodemailer = require('nodemailer');
 
@@ -17,15 +18,15 @@ function sendMail(receiver, newPassword) {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'reyclistapp@gmail.com',
-            pass: 'reyclist123'
+            user: process.env.email,
+            pass: process.env.password
         }
     });
 
     var mailOptions = {
         from: 'reyclistapp@gmail.com',
         to: receiver,
-        subject: 'New password created successfully',
+        subject: messages.EMAIL.newPasswordGenerated,
         text: newPassword
     };
 
