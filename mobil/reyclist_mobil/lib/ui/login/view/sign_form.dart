@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:reyclist_mobil/core/constants/icon_constants.dart';
+import 'package:reyclist_mobil/core/constants/widget_size_constant.dart';
 import 'package:reyclist_mobil/core/mixin/form_validation_mixin.dart';
 import 'package:reyclist_mobil/core/widgets/button/box_button.dart';
 import 'package:reyclist_mobil/core/widgets/inputs/form_input.dart';
 import 'package:kartal/kartal.dart';
-import 'package:reyclist_mobil/ui/forgot_password/forgot_password_view.dart';
+
+import '../../forgot_password/forgot_password_view.dart';
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);
@@ -48,14 +50,13 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
         key: _formKey,
         child: Column(
           children: [
-            _emailFormField(_emailController),
-            const SizedBox(height: 30),
+            _emailFormField(),
+            SizedBox(height: WidgetSizeConstant.xLarge),
             _passwordFormField(
-              passwordController: _passwordController,
               isObSecure: _isObscure,
               obscureTap: _obSecureUpdate,
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: WidgetSizeConstant.xLarge * 2),
             Row(
               children: [
                 _rememberMe,
@@ -64,12 +65,11 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
                 _forgotPass,
               ],
             ),
+            SizedBox(height: WidgetSizeConstant.xLarge * 2),
             BoxButton(
-              title: 'Gririş Yap',
+              title: 'Giriş Yap',
               onTap: () async {
-                if (_formKey.currentState?.validate() ?? false) {
-                  print('kod çalısti');
-                }
+                if (_formKey.currentState?.validate() ?? false) {}
               },
             )
           ],
@@ -77,7 +77,6 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
   }
 
   Widget _passwordFormField({
-    required TextEditingController? passwordController,
     required bool isObSecure,
     required void Function()? obscureTap,
   }) {
@@ -85,30 +84,19 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
       controller: _passwordController,
       password: isObSecure,
       validator: (value) => checkPassword(value),
+      placeholder: 'Şifre',
+      trailing: Icon(isObSecure ? Icons.visibility : Icons.visibility_off),
+      leading: IconConstants.lock,
+      trailingTapped: obscureTap,
     );
-    // TextFormField(
-
-    // decoration: InputDecoration(
-    //   prefixIcon: const Icon(Icons.lock),
-    //   labelText: 'Şifre',
-    //   border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
-    //   suffixIcon: IconButton(icon: Icon(isObSecure ? Icons.visibility : Icons.visibility_off), onPressed: obscureTap),
-    // ),
-    // );
   }
 
-  TextFormField _emailFormField(TextEditingController? email) {
-    return TextFormField(
-      controller: email,
+  BoxInputField _emailFormField() {
+    return BoxInputField(
+      controller: _emailController,
+      placeholder: 'E-posta',
       validator: (value) => checkEmail(value),
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        prefixIcon: IconConstants.email,
-        labelText: 'E-posta',
-        //hintText: 'E-posta ',
-        // floatingLabelBehavior: FloatingLabelBehavior.always,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
-      ),
+      leading: IconConstants.email,
     );
   }
 

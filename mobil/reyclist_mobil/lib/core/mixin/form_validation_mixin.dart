@@ -16,4 +16,22 @@ mixin FormValidationMixin {
       return 'E-postanız yada doğru doldurulmalıdır.';
     }
   }
+
+  String? checkNull(String? value) {
+    if (value?.isNotEmpty ?? false) {
+      return null;
+    } else {
+      return 'Boş bırakılmaz.';
+    }
+  }
+
+  String? checkPhoneNumber(String? value) {
+    if (value?.isEmpty ?? false) return null;
+    if (value!.length == 11 ||
+        RegexConstants.instance.phoneValidatorRegExp.hasMatch(value)) {
+      return null;
+    } else {
+      return 'Telefonunuz 11 haneli ve 0-9 arasında olmalıdır';
+    }
+  }
 }
