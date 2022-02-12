@@ -1,17 +1,31 @@
+const RecyclingCenter = require('../models/recycling_center_model')
 const WasteType = require('../models/waste_type')
-const { customResponse } = require('../models/response_model')
 const messages = require('../constants/message_constants')
+const { customResponse } = require('../models/response_model')
+const http = require('../constants/http_status_constants')
 
 const addWasteType = async (req, res) => {
     try {
         const wasteType = new WasteType(req.body)
         await wasteType.save()
-        return res.status(201).json(customResponse(true, null, null))
+        return res.status(http.CREATED).json(customResponse(true, null, null))
     } catch (error) {
-        return res.status(201).json(customResponse(false, messages.SERVER_ERRORS.internal_server_error, null))
+        return res.status(http.INTERNAL_SERVER).json(customResponse(false, messages.SERVER_ERRORS.internal_server_error, null))
     }
 }
 
+const addRecyclingCenter = async (req, res) => {
+    try {
+        const recyclingCenter = new RecyclingCenter(req.body)
+        await recyclingCenter.save()
+        return res.status(http.CREATED).json(customResponse(true, null, null))
+    } catch (error) {
+        return res.status(http.INTERNAL_SERVER)
+    }
+}
+
+
 module.exports = {
-    addWasteType
+    addWasteType,
+    addRecyclingCenter
 }
