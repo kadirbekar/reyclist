@@ -33,7 +33,11 @@ const UserSchema = new Schema({
         required: true,
         trim: true,
         type: String,
-    }
+    },
+    "point": {
+        type: Number,
+        default: 0
+    },
 }, { collection: "user", versionKey: false })
 
 const User = mongoose.model('User', UserSchema)

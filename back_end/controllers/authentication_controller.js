@@ -10,7 +10,7 @@ const login = async (req, res) => {
         console.log(requestBody)
         const user = await User.findOne({ email: requestBody.email, password: requestBody.password })
         if (user) {
-            return res.status(200).json(customResponse(true, null, user.id))
+            return res.status(200).json(customResponse(true, null, user))
         } else {
             return res.status(400).json(customResponse(false, messages.USER.login.emailOrPasswordWrong, null))
         }
