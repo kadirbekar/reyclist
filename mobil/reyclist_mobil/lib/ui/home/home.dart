@@ -52,16 +52,14 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         padding: EdgeInsets.all(7),
                         decoration: BoxDecoration(
-                            color: Colors.greenAccent,
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                            color: Colors.greenAccent, borderRadius: BorderRadius.all(Radius.circular(5))),
                         child: Text(
                           "Level-3   -   1330",
                           style: TextStyle(fontSize: 15),
                         ),
                       ),
                       ElevatedButton(
-                        style:
-                            ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                        style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
                         child: Text(
                           "Geri Dönüşüm Geçmişim",
                           style: TextStyle(color: Colors.white),
@@ -104,8 +102,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                               child: Text(
                             "örnek",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 36.0),
+                            style: TextStyle(color: Colors.white, fontSize: 36.0),
                           )),
                         ),
                       ),
@@ -141,8 +138,7 @@ class _HomePageState extends State<HomePage> {
                             child: Center(
                                 child: Text(
                               "örnek",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 36.0),
+                              style: TextStyle(color: Colors.white, fontSize: 36.0),
                             )),
                           ),
                         ),
