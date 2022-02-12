@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reyclist_mobil/ui/home/home.dart';
 import 'package:reyclist_mobil/ui/splash/splash_view.dart';
 
 void main() => runApp(const Reyclist());

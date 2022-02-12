@@ -6,7 +6,7 @@ import 'package:reyclist_mobil/core/widgets/button/box_button.dart';
 import 'package:reyclist_mobil/core/widgets/inputs/form_input.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../forgot_passworld/forgot_passworld_view.dart';
+import '../../forgot_password/forgot_password_view.dart';
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);

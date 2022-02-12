@@ -35,7 +35,6 @@ class _RegisterFormState extends State<RegisterForm> with FormValidationMixin {
     _passwordController = TextEditingController();
     _nameController = TextEditingController();
     _surnameController = TextEditingController();
-
     _phoneController = TextEditingController();
     super.initState();
   }
@@ -46,7 +45,6 @@ class _RegisterFormState extends State<RegisterForm> with FormValidationMixin {
     _passwordController?.dispose();
     _nameController?.dispose();
     _surnameController?.dispose();
-
     _phoneController?.dispose();
     super.dispose();
   }
