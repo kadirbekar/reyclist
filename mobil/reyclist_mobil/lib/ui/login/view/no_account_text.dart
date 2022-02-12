@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reyclist_mobil/core/init/design/color.dart';
 import 'package:reyclist_mobil/core/init/design/text_style.dart';
 import '../../register/view/register_view.dart';
+import 'package:kartal/kartal.dart';
 
 class NoAccountText extends StatelessWidget {
   const NoAccountText({
@@ -15,12 +16,14 @@ class NoAccountText extends StatelessWidget {
       children: [
         const Text("Hesabın yok mu? ", style: bodyStyle),
         GestureDetector(
-          onTap: () => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const RegisterView())),
-          //Navigator.pushNamed(context, SignUpScreen.routeName),
-          child: Text("Kayıt Ol",
-              style: heading3Style.copyWith(
-                  color: kcPrimaryColor, decoration: TextDecoration.underline)),
+          onTap: () => context.navigateToPage(const RegisterView()),
+          child: Text(
+            "Kayıt Ol",
+            style: heading3Style.copyWith(
+              color: kcPrimaryColor,
+              decoration: TextDecoration.underline,
+            ),
+          ),
         ),
       ],
     );

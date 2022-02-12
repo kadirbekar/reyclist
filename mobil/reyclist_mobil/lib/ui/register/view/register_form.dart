@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/init/design/constanst.dart';
+import 'package:reyclist_mobil/core/constants/icon_constants.dart';
+import 'package:reyclist_mobil/core/constants/regex_constants.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({Key? key}) : super(key: key);
@@ -11,19 +11,38 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passworConformController =
-      TextEditingController();
-  final TextEditingController _nameController = TextEditingController();
 
-  final TextEditingController _surnameController = TextEditingController();
+  late final TextEditingController? _emailController;
+  late final TextEditingController? _passwordController;
+  late final TextEditingController? _nameController;
+  late final TextEditingController? _surnameController;
+  late final TextEditingController? _mailController;
+  late final TextEditingController? _phoneController;
 
-  final TextEditingController _mailController = TextEditingController();
-
-  final TextEditingController _phoneController = TextEditingController();
   bool _remember = false;
   bool _isObscure = true;
+
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    _nameController = TextEditingController();
+    _surnameController = TextEditingController();
+    _emailController = TextEditingController();
+    _phoneController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController?.dispose();
+    _passwordController?.dispose();
+    _nameController?.dispose();
+    _surnameController?.dispose();
+    _emailController?.dispose();
+    _phoneController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +62,11 @@ class _RegisterFormState extends State<RegisterForm> {
     );
   }
 
-  TextFormField _passwordFormField(
-      TextEditingController passworld, bool isObSecure,
-      {void Function()? obscureTap}) {
+  TextFormField _passwordFormField(TextEditingController? passworld, bool isObSecure, {void Function()? obscureTap}) {
     return TextFormField(
       controller: passworld,
       validator: (value) {
+        //  TODO: Form mixin içerisinden bu method çağrılabilir.
         if (value!.length < 8) {
           return 'Şifreniz en az 8 karakter olmalıdır';
         } else {
@@ -60,17 +78,19 @@ class _RegisterFormState extends State<RegisterForm> {
           prefixIcon: const Icon(Icons.lock),
           labelText: 'Şifre',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
-          suffixIcon: IconButton(
-              icon: Icon(isObSecure ? Icons.visibility : Icons.visibility_off),
-              onPressed: obscureTap)),
+          //  TODO: buradaki iconlar icon constant içerisine tanımlanabilir.
+          suffixIcon:
+              IconButton(icon: Icon(isObSecure ? Icons.visibility : Icons.visibility_off), onPressed: obscureTap)),
     );
   }
 
-  TextFormField _emailFormField(TextEditingController email) {
+  TextFormField _emailFormField(TextEditingController? email) {
+    //  TODO: box input field kullanılabilir.
     return TextFormField(
       controller: email,
       validator: (value) {
-        if (emailValidatorRegExp.hasMatch(value ?? '')) {
+        //  form mixin içerisinden checkEmail metodu çağrılabilir.
+        if (RegexConstants.instance.emailValidatorRegExp.hasMatch(value ?? '')) {
           return null;
         } else {
           return 'E-postanız yada doğru doldurulmalıdır.';
@@ -78,7 +98,7 @@ class _RegisterFormState extends State<RegisterForm> {
       },
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.email),
+        prefixIcon: IconConstants.email,
         labelText: 'E-posta',
         //hintText: 'E-posta ',
         // floatingLabelBehavior: FloatingLabelBehavior.always,
