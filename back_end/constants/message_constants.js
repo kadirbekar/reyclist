@@ -11,7 +11,15 @@ const MESSAGES = {
     "USER": {
         "login": {
             "emailOrPasswordWrong": "Email or password wrong."
+        },
+        "forgetPassword": {
+            "userNotFound": "User not found.",
+            "passwordUpdated": "Password updated successfully."
         }
+    },
+    "EMAIL": {
+        "newPasswordGenerated": "New password generated successfully."
+
     }
 }
 

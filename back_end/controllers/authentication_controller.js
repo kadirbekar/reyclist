@@ -2,12 +2,14 @@ const Login = require('../models/login_model')
 const User = require('../models/user_model')
 const messages = require('../constants/message_constants')
 const { customResponse } = require('../models/response_model')
+const utility = require('../utility/email_service')
 
 const login = async (req, res) => {
     try {
-        const requestBody = req.body;
-        const user = await User.findOne({ email: requestBody.email })
-        if (user && user.password == req.body.password) {
+        const requestBody = new Login(req.body);
+        console.log(requestBody)
+        const user = await User.findOne({ email: requestBody.email, password: requestBody.password })
+        if (user) {
             return res.status(200).json(customResponse(true, null, user.id))
         } else {
             return res.status(400).json(customResponse(false, messages.USER.login.emailOrPasswordWrong, null))
@@ -29,7 +31,31 @@ const register = async (req, res) => {
     }
 }
 
+const forgetPassword = async (req, res) => {
+    try {
+        const email = req.body.email
+        const user = await User.findOne({ email: email })
+        if (user) {
+            const generatedPassword = utility.generateRandomPassword()
+            const isUserUpdated = await User.findOneAndUpdate({ email: email }, {
+                $set: {
+                    password: generatedPassword
+                }
+            })
+            if (isUserUpdated) {
+                utility.sendMail(email, generatedPassword)
+                return res.status(201).json(customResponse(true, messages.USER.forgetPassword.passwordUpdated, null))
+            }
+        } else {
+            return res.status(404).json(customResponse(false, messages.USER.forgetPassword.userNotFound, null))
+        }
+    } catch (error) {
+
+    }
+}
+
 module.exports = {
     login,
-    register
+    register,
+    forgetPassword
 }
