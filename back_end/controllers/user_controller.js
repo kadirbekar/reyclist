@@ -28,6 +28,21 @@ const updateUserPoint = async (req, res) => {
     }
 }
 
+const updateUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        if (user) {
+            await User.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true, lean: true });
+            return res.status(http.UPDATED).json(customResponse(true, null, null))
+        } else {
+            return res.status(http.BAD_REQUEST).json(customResponse(false, messages.ERROR.general_error_message, null))
+        }
+    } catch (error) {
+        return res.status(http.INTERNAL_SERVER).json(customResponse(false, messages.SERVER_ERRORS.internal_server_error, null))
+    }
+}
+
 module.exports = {
-    updateUserPoint
+    updateUserPoint,
+    updateUser
 }
