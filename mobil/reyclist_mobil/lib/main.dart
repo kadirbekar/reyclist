@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'ui/forgot_password/forgot_password_view.dart';
+import 'package:reyclist_mobil/ui/splash/splash_view.dart';
 
 void main() => runApp(const Reyclist());
 
@@ -12,7 +11,7 @@ class Reyclist extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Reyclist',
-      home: ForgotPasswordView(),
+      home: SplashView(),
     );
   }
 }
