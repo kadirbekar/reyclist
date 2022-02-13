@@ -1,4 +1,3 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,7 +13,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         actions: [
           IconButton(
             onPressed: () {},
@@ -154,19 +153,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        height: 60.0,
-        items: const [
-          Icon(Icons.home, size: 30),
-          Icon(Icons.map, size: 30),
-          Icon(Icons.qr_code, size: 30),
-        ],
-        color: Colors.white,
-        buttonBackgroundColor: Colors.white,
-        backgroundColor: Colors.orange,
-        animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 600),
       ),
     );
   }
