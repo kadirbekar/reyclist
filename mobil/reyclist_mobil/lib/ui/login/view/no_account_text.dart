@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:reyclist_mobil/core/init/design/color.dart';
-import 'package:reyclist_mobil/core/init/design/text_style.dart';
-import '../../register/view/register_view.dart';
 import 'package:kartal/kartal.dart';
+
+import '../../../product/color/app_colors.dart';
+import '../../../product/text/app_strings.dart';
+import '../../register/view/register_view.dart';
 
 class NoAccountText extends StatelessWidget {
   const NoAccountText({
@@ -14,17 +15,14 @@ class NoAccountText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Hesabın yok mu? ", style: bodyStyle),
-        GestureDetector(
-          onTap: () => context.navigateToPage(const RegisterView()),
+        Text(TextConstants.questionLogin, style: context.textTheme.headline6),
+        TextButton(
+          onPressed: () => context.navigateToPage(const RegisterView()),
           child: Text(
-            "Kayıt Ol",
-            style: heading3Style.copyWith(
-              color: kcPrimaryColor,
-              decoration: TextDecoration.underline,
-            ),
+            TextConstants.loginText,
+            style: context.textTheme.headline6?.copyWith(color: AppColor.appThemeColor),
           ),
-        ),
+        )
       ],
     );
   }

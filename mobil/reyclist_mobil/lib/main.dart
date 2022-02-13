@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reyclist_mobil/ui/QR/qr.dart';
-import 'package:reyclist_mobil/ui/home/home.dart';
-import 'package:reyclist_mobil/ui/map/map.dart';
+
+import 'ui/forgot_password/forgot_password_view.dart';
 
 void main() => runApp(const Reyclist());
 
@@ -13,7 +12,7 @@ class Reyclist extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Reyclist',
-      home: mapPage(),
+      home: ForgotPasswordView(),
     );
   }
 }

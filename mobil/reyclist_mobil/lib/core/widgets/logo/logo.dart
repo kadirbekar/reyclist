@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
+
+import '../../../product/color/app_colors.dart';
+import '../../../product/text/app_strings.dart';
 
 class Logo extends StatelessWidget {
   const Logo({Key? key}) : super(key: key);
@@ -8,18 +12,16 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 80,
-      height: 80,
+      width: context.dynamicHeight(0.2),
+      height: context.dynamicWidth(0.3),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.green,
+        borderRadius: context.lowBorderRadius,
+        color: AppColor.appThemeColor,
       ),
-      child: const Text('R',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 60,
-          )),
+      child: Text(TextConstants.loginAppTiitle,
+          style: context.textTheme.headline2
+              ?.copyWith(color: context.colorScheme.onSecondary, fontWeight: FontWeight.bold)),
     );
   }
 }

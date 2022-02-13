@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:reyclist_mobil/ui/login/view/login_view.dart';
+
+import '../../product/text/app_strings.dart';
+import '../login/view/login_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Splash View"),
+        title: Text(TextConstants.splashAppbar),
       ),
     );
   }
