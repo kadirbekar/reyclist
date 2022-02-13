@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:provider/provider.dart';
+import 'package:reyclist_mobil/ansayfa.dart';
+import 'package:reyclist_mobil/core/init/local_storage/shared_storage_service.dart';
 import 'package:reyclist_mobil/core/init/network/network_service.dart';
 import 'package:reyclist_mobil/ui/login/login_view_model/login_view_model.dart';
 import 'package:reyclist_mobil/ui/login/model/login_model.dart';
@@ -30,12 +33,12 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
 
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
-  late final LoginViewModel _loginViewModel;
+  late final ILoginService _loginService;
 
   @override
   void initState() {
     super.initState();
-    _loginViewModel = LoginViewModel(manager: NetworkSettings.instance.networkManager);
+    _loginService = LoginService(NetworkSettings.instance.networkManager);
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
   }
@@ -83,8 +86,12 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
                     email: _emailController.text,
                     password: _passwordController.text,
                   );
-                  final response = await _loginViewModel.login(model);
-                  if (response != null) {}
+                  final response = await _loginService.login(model);
+                  if (response != null) {
+                    SharedStorageService.instance.saveBooleanValue(SharedStorage.login.name, true);
+                    context.read<UserContext>().setUserData(response.data);
+                    context.navigateToPage(const MainPage());
+                  }
                 }
               },
             )
