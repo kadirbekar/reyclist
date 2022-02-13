@@ -13,12 +13,6 @@ app.use('/api/authentication', authenticationRouter)
 app.use('/api/user', userRouter)
 app.use('/api/shared', sharedRouter)
 
-app.use('/apiTest', (req, res) => {
-    return res.status(201).json({
-        ok: true,
-    })
-})
-
 app.listen(process.env.PORT || 3000, (err, suc) => {
     if (err) throw err
 

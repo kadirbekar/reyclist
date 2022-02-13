@@ -2,6 +2,7 @@ const { customResponse } = require('../models/response_model')
 const messages = require('../constants/message_constants')
 const User = require('../models/user_model')
 const Transaction = require('../models/transaction_model')
+const http = require('../constants/http_status_constants')
 
 const updateUserPoint = async (req, res) => {
     try {
@@ -14,16 +15,16 @@ const updateUserPoint = async (req, res) => {
         await user.save()
 
         const transaction = new Transaction()
+        transaction.point = point
+        transaction.recyclingCenterId = req.body.recyclingCenterId
+        transaction.userId = id
+        transaction.wasteType = req.body.wasteType
+        await transaction.save()
 
-
-        if (user) {
-            return res.status(201).json(customResponse(true, null, null))
-        } else {
-            return res.status(400).json(customResponse(false, messages.ERROR.general_error_message, null))
-        }
+        return res.status(http.UPDATED).json(customResponse(true, null, null))
 
     } catch (error) {
-        return res.status(500).json(customResponse(false, messages.SERVER_ERRORS.internal_server_error, null))
+        return res.status(http.INTERNAL_SERVER).json(customResponse(false, messages.SERVER_ERRORS.internal_server_error, null))
     }
 }
 
