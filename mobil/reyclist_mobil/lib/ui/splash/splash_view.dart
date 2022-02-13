@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:reyclist_mobil/ansayfa.dart';
 
 import '../../core/init/local_storage/shared_storage_service.dart';
 import '../../core/init/network/network_service.dart';
@@ -17,8 +18,12 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    _initializeServices().whenComplete(() {
-      _navigateToLoginView();
+    _initializeServices().whenComplete(() async {
+      if (await SharedStorageService.instance.readBoolValue(SharedStorage.login.name)) {
+        _navigateToPage(const MainPage());
+      } else {
+        _navigateToPage(const LoginView());
+      }
     });
   }
 
@@ -27,9 +32,9 @@ class _SplashViewState extends State<SplashView> {
     await SharedStorageService.instance.initializeSharedPreferences();
   }
 
-  _navigateToLoginView() async {
+  _navigateToPage(Widget page) async {
     await Future.delayed(const Duration(milliseconds: 5500), () {
-      context.navigateToPage(const LoginView());
+      context.navigateToPage(page);
     });
   }
 
