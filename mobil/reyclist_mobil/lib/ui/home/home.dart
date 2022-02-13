@@ -155,7 +155,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-<<<<<<< HEAD
       bottomNavigationBar: CurvedNavigationBar(
         height: 60.0,
         items: const [
@@ -169,8 +168,6 @@ class _HomePageState extends State<HomePage> {
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 600),
       ),
-=======
->>>>>>> main
     );
   }
 }
