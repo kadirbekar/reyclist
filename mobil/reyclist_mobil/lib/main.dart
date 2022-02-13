@@ -12,7 +12,7 @@ class Reyclist extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => LoginViewModel())
+        ChangeNotifierProvider(create: (context) => UserContext())
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
