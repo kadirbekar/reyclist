@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class qrScanPage extends StatefulWidget {
-  const qrScanPage({Key? key}) : super(key: key);
+class QrScanPage extends StatefulWidget {
+  const QrScanPage({Key? key}) : super(key: key);
 
   @override
-  _qrScanPageState createState() => _qrScanPageState();
+  _QrScanPageState createState() => _QrScanPageState();
 }
 
-class _qrScanPageState extends State<qrScanPage> {
+class _QrScanPageState extends State<QrScanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +21,7 @@ class _qrScanPageState extends State<qrScanPage> {
             ),
             SizedBox(
               height: 300,
-              child: Image.network(
-                  "https://i.pinimg.com/originals/9d/8e/04/9d8e04771acbce143bc9ee2737239404.png"),
+              child: Image.network("https://i.pinimg.com/originals/9d/8e/04/9d8e04771acbce143bc9ee2737239404.png"),
             )
           ],
         ),

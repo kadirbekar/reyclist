@@ -47,23 +47,41 @@ class _MapPageState extends State<MapPage> {
         ),
         context: context,
         builder: (context) {
-          return SizedBox(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  titleRecyclingCenter(context),
-                  wastes(),
-                  const SizedBox(
-                    height: 5,
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      titleRecyclingCenter(context),
+                      wastes(),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      descriptionWaste(),
+                      buttonGetDirection(),
+                    ],
                   ),
-                  descriptionWaste(),
-                  buttonGetDirection(),
-                ],
+                ),
               ),
-            ),
+              ListTile(
+                leading: const Icon(Icons.replay_circle_filled),
+                title: const Text('Etimesut Geri Dönüşüm Tesisi'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              const ListTile(
+                leading: Text("Plastic"),
+              ),
+              const ListTile(
+                leading: Text("Glass"),
+              )
+            ],
           );
         });
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:reyclist_mobil/ui/login/login_view_model/login_view_model.dart';
 import 'package:reyclist_mobil/ui/splash/splash_view.dart';
 
 void main() => runApp(const Reyclist());
@@ -8,10 +10,15 @@ class Reyclist extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Reyclist',
-      home: SplashView(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => LoginViewModel())
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Reyclist',
+        home: SplashView()
+      ),
     );
   }
 }
