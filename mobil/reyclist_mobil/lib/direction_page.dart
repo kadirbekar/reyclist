@@ -53,7 +53,7 @@ class _DirectionPageState extends State<DirectionPage> {
         ],
         color: Colors.white,
         buttonBackgroundColor: Colors.white,
-        backgroundColor: Colors.green.shade300,
+        backgroundColor: Colors.orange,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 600),
         onTap: (selectPage) {
