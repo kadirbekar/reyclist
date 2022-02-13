@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:reyclist_mobil/core/widgets/button/box_button.dart';
@@ -21,19 +22,31 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Stack(
-        children: [
-          GoogleMap(
-            onMapCreated: _onMapCreated,
-            initialCameraPosition: CameraPosition(target: _center),
-            onTap: (position) {
-              _showInformationCard(context);
-            },
-          ),
-        ],
-      )),
-    );
+        body: SafeArea(
+            child: Stack(
+          children: [
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(target: _center),
+              onTap: (position) {
+                _showInformationCard(context);
+              },
+            ),
+          ],
+        )),
+        bottomNavigationBar: CurvedNavigationBar(
+          height: 60.0,
+          items: const [
+            Icon(Icons.home, size: 30),
+            Icon(Icons.map, size: 30),
+            Icon(Icons.qr_code, size: 30),
+          ],
+          color: Colors.white,
+          buttonBackgroundColor: Colors.white,
+          backgroundColor: Colors.orange,
+          animationCurve: Curves.easeInOut,
+          animationDuration: Duration(milliseconds: 600),
+        ));
   }
 
   Future<dynamic> _showInformationCard(BuildContext context) {
@@ -46,23 +59,41 @@ class _MapPageState extends State<MapPage> {
         ),
         context: context,
         builder: (context) {
-          return SizedBox(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  titleRecyclingCenter(context),
-                  wastes(),
-                  const SizedBox(
-                    height: 5,
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      titleRecyclingCenter(context),
+                      wastes(),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      descriptionWaste(),
+                      buttonGetDirection(),
+                    ],
                   ),
-                  descriptionWaste(),
-                  buttonGetDirection(),
-                ],
+                ),
               ),
-            ),
+              ListTile(
+                leading: const Icon(Icons.replay_circle_filled),
+                title: const Text('Etimesut Geri Dönüşüm Tesisi'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              const ListTile(
+                leading: Text("Plastic"),
+              ),
+              const ListTile(
+                leading: Text("Glass"),
+              )
+            ],
           );
         });
   }
@@ -132,10 +163,7 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
-  Container recycling(
-      {required Icon icon,
-      required String recyclingName,
-      required Color color}) {
+  Container recycling({required Icon icon, required String recyclingName, required Color color}) {
     return Container(
       alignment: Alignment.center,
       height: 25,

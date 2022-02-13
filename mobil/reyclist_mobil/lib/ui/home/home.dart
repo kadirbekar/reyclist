@@ -155,6 +155,19 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 60.0,
+        items: const [
+          Icon(Icons.home, size: 30),
+          Icon(Icons.map, size: 30),
+          Icon(Icons.qr_code, size: 30),
+        ],
+        color: Colors.white,
+        buttonBackgroundColor: Colors.white,
+        backgroundColor: Colors.orange,
+        animationCurve: Curves.easeInOut,
+        animationDuration: Duration(milliseconds: 600),
+      ),
     );
   }
 }

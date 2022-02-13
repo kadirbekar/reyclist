@@ -18,12 +18,12 @@ class LoginView extends StatelessWidget {
           child: Center(
             child: SingleChildScrollView(
                 child: Column(children: [
-              Logo(),
+              const Logo(),
               Text(TextConstants.loginAppDescription,
                   style: context.textTheme.headline3?.copyWith(fontWeight: FontWeight.bold)),
               SizedBox(height: context.dynamicHeight(0.02)),
-              SignForm(),
-              NoAccountText(),
+              const SignForm(),
+              const NoAccountText(),
             ])),
           ),
         ),
