@@ -4,14 +4,14 @@ import 'package:reyclist_mobil/ui/QR/qr.dart';
 import 'package:reyclist_mobil/ui/home/home.dart';
 import 'package:reyclist_mobil/ui/map/map.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+class DirectionPage extends StatefulWidget {
+  const DirectionPage({Key? key}) : super(key: key);
 
   @override
-  _MainPageState createState() => _MainPageState();
+  _DirectionPageState createState() => _DirectionPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _DirectionPageState extends State<DirectionPage> {
   int _aktifNo = 0;
   late PageController sayfaKumandasi;
 

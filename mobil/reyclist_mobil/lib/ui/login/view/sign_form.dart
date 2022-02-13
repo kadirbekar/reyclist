@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
-import 'package:reyclist_mobil/ansayfa.dart';
+
 import 'package:reyclist_mobil/core/init/local_storage/shared_storage_service.dart';
 import 'package:reyclist_mobil/core/init/network/network_service.dart';
+import 'package:reyclist_mobil/direction_page.dart';
 import 'package:reyclist_mobil/ui/login/login_view_model/login_view_model.dart';
 import 'package:reyclist_mobil/ui/login/model/login_model.dart';
 import 'package:reyclist_mobil/ui/login/service/login_service.dart';
-import 'package:reyclist_mobil/ui/login/view/login_view.dart';
 
 import '../../../core/constants/icon_constants.dart';
 import '../../../core/constants/widget_size_constant.dart';
@@ -88,9 +88,10 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
                   );
                   final response = await _loginService.login(model);
                   if (response != null) {
-                    SharedStorageService.instance.saveBooleanValue(SharedStorage.login.name, true);
+                    SharedStorageService.instance
+                        .saveBooleanValue(SharedStorage.login.name, true);
                     context.read<UserContext>().setUserData(response.data);
-                    context.navigateToPage(const MainPage());
+                    context.navigateToPage(const DirectionPage());
                   }
                 }
               },
