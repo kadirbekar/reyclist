@@ -15,16 +15,6 @@ class _QrScanPageState extends State<QrScanPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.arrow_back_outlined,
-                      color: Colors.black,
-                    ))
-              ],
-            ),
             const Text(
               "Scan QR Code",
               style: TextStyle(fontSize: 40),

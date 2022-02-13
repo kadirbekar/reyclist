@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.settings,
               color: Colors.grey,
             ),
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               child: Row(children: [
-                Expanded(
+                const Expanded(
                   child: Center(
                     child: CircleAvatar(
                       backgroundImage: NetworkImage(
@@ -42,25 +42,27 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Evin Gülcan",
                         style: TextStyle(fontSize: 20),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        padding: EdgeInsets.all(7),
-                        decoration: BoxDecoration(
-                            color: Colors.greenAccent, borderRadius: BorderRadius.all(Radius.circular(5))),
-                        child: Text(
+                        padding: const EdgeInsets.all(7),
+                        decoration: const BoxDecoration(
+                            color: Colors.greenAccent,
+                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                        child: const Text(
                           "Level-3   -   1330",
                           style: TextStyle(fontSize: 15),
                         ),
                       ),
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-                        child: Text(
+                        style:
+                            ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                        child: const Text(
                           "Geri Dönüşüm Geçmişim",
                           style: TextStyle(color: Colors.white),
                         ),
@@ -86,23 +88,25 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
               height: MediaQuery.of(context).size.height * 0.2,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: Card(
-                        margin: EdgeInsets.only(right: 10.0),
+                        margin: const EdgeInsets.only(right: 10.0),
                         elevation: 5,
                         color: Colors.orangeAccent,
                         child: Container(
-                          child: Center(
+                          child: const Center(
                               child: Text(
                             "örnek",
-                            style: TextStyle(color: Colors.white, fontSize: 36.0),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 36.0),
                           )),
                         ),
                       ),
@@ -112,7 +116,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Row(
-                children: [
+                children: const [
                   Text(
                     "Academy",
                     textAlign: TextAlign.start,
@@ -123,22 +127,24 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0, vertical: 10.0),
                 height: MediaQuery.of(context).size.height * 0.3,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                      return Container(
+                      return SizedBox(
                         width: MediaQuery.of(context).size.width * 0.6,
                         child: Card(
                           elevation: 5,
                           color: Colors.green,
                           child: Container(
-                            child: Center(
+                            child: const Center(
                                 child: Text(
                               "örnek",
-                              style: TextStyle(color: Colors.white, fontSize: 36.0),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 36.0),
                             )),
                           ),
                         ),
@@ -149,6 +155,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+<<<<<<< HEAD
       bottomNavigationBar: CurvedNavigationBar(
         height: 60.0,
         items: const [
@@ -162,6 +169,8 @@ class _HomePageState extends State<HomePage> {
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 600),
       ),
+=======
+>>>>>>> main
     );
   }
 }
