@@ -3,6 +3,7 @@ const WasteType = require('../models/waste_type')
 const messages = require('../constants/message_constants')
 const { customResponse } = require('../models/response_model')
 const http = require('../constants/http_status_constants')
+const shared = require('../constants/shared_data')
 
 const addWasteType = async (req, res) => {
     try {
@@ -24,8 +25,13 @@ const addRecyclingCenter = async (req, res) => {
     }
 }
 
+const fetchCouponsAndArticles = async (req, res) => {
+    return res.status(http.FETCH).json(customResponse(true, null, shared.data))
+}
+
 
 module.exports = {
     addWasteType,
-    addRecyclingCenter
+    addRecyclingCenter,
+    fetchCouponsAndArticles
 }
