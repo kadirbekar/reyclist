@@ -19,8 +19,9 @@ class LoginView extends StatelessWidget {
             child: SingleChildScrollView(
                 child: Column(children: [
               const Logo(),
+              const SizedBox(height: 10),
               Text(TextConstants.loginAppDescription,
-                  style: context.textTheme.headline3?.copyWith(fontWeight: FontWeight.bold)),
+                  style: context.textTheme.headline5?.copyWith(fontSize: 24, fontWeight: FontWeight.w600)),
               SizedBox(height: context.dynamicHeight(0.02)),
               const SignForm(),
               const NoAccountText(),

@@ -3,6 +3,7 @@ import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
 import 'package:reyclist_mobil/core/constants/padding_constants.dart';
 import 'package:reyclist_mobil/direction_page.dart';
+import 'package:reyclist_mobil/product/color/app_colors.dart';
 import 'package:reyclist_mobil/ui/login/login_view_model/login_view_model.dart';
 import 'package:reyclist_mobil/ui/login/model/user_response_model.dart';
 
@@ -34,8 +35,8 @@ class _SplashViewState extends State<SplashView> {
 
   Future<void> _checkUserLoginStatus() async {
     if (await SharedStorageService.instance.readBoolValue(SharedEnum.login.name)) {
-      context.read<UserContext>().setUserDataFromLocalStorage(
-          SharedStorageService.instance.readModel<UserResponseModel>(SharedEnum.user.name));
+      // context.read<UserContext>().setUserDataFromLocalStorage(
+      //     SharedStorageService.instance.readModel<UserResponseModel>(SharedEnum.user.name));
       _navigateToPage(const DirectionPage());
     } else {
       _navigateToPage(const LoginView());

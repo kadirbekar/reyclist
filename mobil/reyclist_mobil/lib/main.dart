@@ -19,7 +19,11 @@ class Reyclist extends StatelessWidget {
       child:  MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: AppColor.appThemeColor
+          primarySwatch: AppColor.appThemeColor,
+          cardTheme: CardTheme(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            elevation: 4,
+          )
         ),
         title: 'Reyclist',
         home: const SplashView()

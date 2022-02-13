@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:reyclist_mobil/product/color/app_colors.dart';
 import 'package:reyclist_mobil/ui/QR/qr.dart';
 import 'package:reyclist_mobil/ui/home/home.dart';
 import 'package:reyclist_mobil/ui/map/map.dart';
@@ -52,8 +53,8 @@ class _DirectionPageState extends State<DirectionPage> {
           Icon(Icons.qr_code, size: 30),
         ],
         color: Colors.white,
-        buttonBackgroundColor: Colors.white,
-        backgroundColor: Colors.orange,
+        buttonBackgroundColor: AppColor.appThemeColor,
+        backgroundColor: Colors.white,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 600),
         onTap: (selectPage) {

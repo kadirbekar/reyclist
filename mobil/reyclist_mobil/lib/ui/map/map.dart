@@ -104,7 +104,8 @@ class _MapPageState extends State<MapPage> {
       child: ListView(
         children: [
           BoxText.body(
-              "aplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojgjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeoj"),
+            "aplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojgjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeoj",
+          ),
         ],
       ),
     );
@@ -149,10 +150,7 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
-  Container recycling(
-      {required Icon icon,
-      required String recyclingName,
-      required Color color}) {
+  Container recycling({required Icon icon, required String recyclingName, required Color color}) {
     return Container(
       alignment: Alignment.center,
       height: 25,

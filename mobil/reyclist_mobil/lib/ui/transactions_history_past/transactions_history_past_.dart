@@ -20,9 +20,11 @@ class _TransactionsPastState extends State<TransactionsPast> {
 
   ListView bodyListview() {
     return ListView.builder(
-        itemCount: 10,
+        itemCount: TransactionHistoryModel.transactionList.length,
         itemBuilder: (context, index) {
-          return const transactionsPage();
+          return transactionsPage(
+            model: TransactionHistoryModel.transactionList[index],
+          );
         });
   }
 
@@ -32,19 +34,23 @@ class _TransactionsPastState extends State<TransactionsPast> {
 }
 
 class transactionsPage extends StatelessWidget {
-  const transactionsPage({
-    Key? key,
-  }) : super(key: key);
+  const transactionsPage({Key? key, required this.model}) : super(key: key);
+
+  final TransactionHistoryModel model;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: PaddingListTile.all(),
-      child: Card(
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: ListTile(
-          leading: const CircleAvatar(),
-          title: recyclingCenterName,
-          subtitle: recyclingDate,
+          contentPadding: EdgeInsets.zero,
+          leading: CircleAvatar(radius: 36, child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.network("https://www.abccevre.com/dosyalar/2017/11/battery-optimizer-icon.png"),
+          )),
+          title: recyclingDate(model.title),
+          subtitle: recyclingCenterName(model.createdDate),
           trailing: const Icon(
             Icons.recycling_outlined,
             color: Colors.red,
@@ -54,13 +60,32 @@ class transactionsPage extends StatelessWidget {
     );
   }
 
-  Text get recyclingDate => const Text(
-        "Subtitle",
-        style: bodyStyle,
+  Text recyclingDate(String title) => Text(
+        title,
+        style: subheadingStyle,
       );
 
-  Text get recyclingCenterName => const Text(
-        "name",
-        style: heading3Style,
+  Text recyclingCenterName(String date) => Text(
+        date,
+        style: bodyStyle,
       );
+}
+
+class TransactionHistoryModel {
+  final String title;
+  final int point;
+  final String createdDate;
+
+  const TransactionHistoryModel({required this.title, required this.point, required this.createdDate});
+
+  static const List<TransactionHistoryModel> transactionList = [
+    TransactionHistoryModel(title: "1 kg kağıt bırakıldı", point: 25, createdDate: "2022-10-15 15:01"),
+    TransactionHistoryModel(title: "1 kg kağıt bırakıldı", point: 25, createdDate: "2022-10-15 15:01"),
+    TransactionHistoryModel(title: "1 kg kağıt bırakıldı", point: 25, createdDate: "2022-10-15 15:01"),
+    TransactionHistoryModel(title: "1 kg kağıt bırakıldı", point: 25, createdDate: "2022-10-15 15:01"),
+    TransactionHistoryModel(title: "1 kg kağıt bırakıldı", point: 25, createdDate: "2022-10-15 15:01"),
+    TransactionHistoryModel(title: "1 kg kağıt bırakıldı", point: 25, createdDate: "2022-10-15 15:01"),
+    TransactionHistoryModel(title: "1 kg kağıt bırakıldı", point: 25, createdDate: "2022-10-15 15:01"),
+    TransactionHistoryModel(title: "1 kg kağıt bırakıldı", point: 25, createdDate: "2022-10-15 15:01"),
+  ];
 }

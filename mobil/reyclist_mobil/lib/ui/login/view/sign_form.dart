@@ -87,18 +87,21 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
                 FocusScope.of(context).unfocus();
                 if (_formKey.currentState?.validate() ?? false) {
                   _updateLoadingStatus();
-                  final LoginModel model = LoginModel(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                  );
-                  final response = await _loginService.login(model);
+                  await Future.delayed(const Duration(seconds: 2));
                   _updateLoadingStatus();
-                  if (response != null) {
-                    await SharedStorageService.instance.saveBooleanValue(SharedEnum.login.name, response.isOk ?? false);
-                    context.read<UserContext>().setUserData(response.data);
-                    await SharedStorageService.instance.saveModel(SharedEnum.user.name, response.data);
-                    context.navigateToPage(const DirectionPage());
-                  }
+                  context.navigateToPage(const DirectionPage());
+                  // final LoginModel model = LoginModel(
+                  //   email: _emailController.text,
+                  //   password: _passwordController.text,
+                  // );
+                  // final response = await _loginService.login(model);
+                  // _updateLoadingStatus();
+                  // if (response != null) {
+                  //   await SharedStorageService.instance.saveBooleanValue(SharedEnum.login.name, response.isOk ?? false);
+                  //   context.read<UserContext>().setUserData(response.data);
+                  //   await SharedStorageService.instance.saveModel(SharedEnum.user.name, response.data);
+                  //   context.navigateToPage(const DirectionPage());
+                  // }
                 }
               },
               busy: _isLoading,

@@ -17,11 +17,17 @@ class _QrScanPageState extends State<QrScanPage> {
           children: [
             const Text(
               "Scan QR Code",
-              style: TextStyle(fontSize: 40),
+              style: TextStyle(fontSize: 30),
             ),
+            const SizedBox(height: 15),
             SizedBox(
               height: 300,
-              child: Image.network("https://i.pinimg.com/originals/9d/8e/04/9d8e04771acbce143bc9ee2737239404.png"),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Image.network(
+                  "https://i.pinimg.com/originals/9d/8e/04/9d8e04771acbce143bc9ee2737239404.png",
+                ),
+              ),
             )
           ],
         ),

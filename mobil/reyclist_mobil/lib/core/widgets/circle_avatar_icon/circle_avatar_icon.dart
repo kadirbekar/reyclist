@@ -18,8 +18,9 @@ class _CircleAvatarIconState extends State<CircleAvatarIcon> {
         clipBehavior: Clip.none,
         fit: StackFit.expand,
         children: [
-          const CircleAvatar(
-            backgroundImage: AssetImage("assets/images/Profile Image.png"),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(24),
+            child: Image.network("https://randomuser.me/api/portraits/lego/8.jpg"),
           ),
           Positioned(
               bottom: 0,
