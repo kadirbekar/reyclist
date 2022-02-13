@@ -1,7 +1,7 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:reyclist_mobil/core/widgets/button/box_button.dart';
+import 'package:reyclist_mobil/core/widgets/text/box_text.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -22,31 +22,19 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-            child: Stack(
-          children: [
-            GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(target: _center),
-              onTap: (position) {
-                _showInformationCard(context);
-              },
-            ),
-          ],
-        )),
-        bottomNavigationBar: CurvedNavigationBar(
-          height: 60.0,
-          items: const [
-            Icon(Icons.home, size: 30),
-            Icon(Icons.map, size: 30),
-            Icon(Icons.qr_code, size: 30),
-          ],
-          color: Colors.white,
-          buttonBackgroundColor: Colors.white,
-          backgroundColor: Colors.orange,
-          animationCurve: Curves.easeInOut,
-          animationDuration: Duration(milliseconds: 600),
-        ));
+      body: SafeArea(
+          child: Stack(
+        children: [
+          GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(target: _center, zoom: 12.0),
+            onTap: (position) {
+              _showInformationCard(context);
+            },
+          ),
+        ],
+      )),
+    );
   }
 
   Future<dynamic> _showInformationCard(BuildContext context) {
@@ -114,11 +102,9 @@ class _MapPageState extends State<MapPage> {
     return Expanded(
       flex: 2,
       child: ListView(
-        children: const [
-          Text(
-            "aplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojgjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeoj",
-            style: TextStyle(fontSize: 17),
-          ),
+        children: [
+          BoxText.body(
+              "aplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojgjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeoj"),
         ],
       ),
     );
@@ -163,7 +149,10 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
-  Container recycling({required Icon icon, required String recyclingName, required Color color}) {
+  Container recycling(
+      {required Icon icon,
+      required String recyclingName,
+      required Color color}) {
     return Container(
       alignment: Alignment.center,
       height: 25,
