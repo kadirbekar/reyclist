@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reyclist_mobil/product/color/app_colors.dart';
-import 'package:reyclist_mobil/ui/login/login_view_model/login_view_model.dart';
-import 'package:reyclist_mobil/ui/splash/splash_view.dart';
+
+import 'product/color/app_colors.dart';
+import 'ui/login/login_view_model/login_view_model.dart';
+import 'ui/splash/splash_view.dart';
 
 void main() => runApp(const Reyclist());
 

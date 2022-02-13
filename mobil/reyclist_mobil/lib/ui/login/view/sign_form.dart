@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
+import 'package:reyclist_mobil/direction_page.dart';
 
-import '../../../ansayfa.dart';
 import '../../../core/constants/icon_constants.dart';
 import '../../../core/constants/widget_size_constant.dart';
 import '../../../core/init/local_storage/shared_storage_service.dart';
@@ -97,7 +97,7 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
                     await SharedStorageService.instance.saveBooleanValue(SharedEnum.login.name, response.isOk ?? false);
                     context.read<UserContext>().setUserData(response.data);
                     await SharedStorageService.instance.saveModel(SharedEnum.user.name, response.data);
-                    context.navigateToPage(const MainPage());
+                    context.navigateToPage(const DirectionPage());
                   }
                 }
               },
