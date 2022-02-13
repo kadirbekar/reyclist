@@ -1,6 +1,8 @@
 import 'package:reyclist_mobil/core/init/local_storage/local_storage_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+enum SharedStorage { login }
+
 class SharedStorageService extends ILocalStorageService {
   static SharedStorageService? _instance;
   static SharedStorageService get instance => SharedStorageService._initialize();
@@ -13,7 +15,7 @@ class SharedStorageService extends ILocalStorageService {
 
   @override
   Future<bool> saveBooleanValue(String key, bool value) async {
-    return true;
+    return await _preferences?.setBool(key, value) ?? false;
   }
 
   @override
@@ -29,7 +31,5 @@ class SharedStorageService extends ILocalStorageService {
   SharedStorageService._initialize();
 
   @override
-  Future<bool> readBoolValue(String key) async {
-    return true;
-  }
+  Future<bool> readBoolValue(String key) async => _preferences?.getBool(SharedStorage.login.name) ?? false;
 }

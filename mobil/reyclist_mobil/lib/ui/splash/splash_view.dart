@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:reyclist_mobil/core/init/local_storage/shared_storage_service.dart';
-import 'package:reyclist_mobil/core/init/network/network_service.dart';
+
+import '../../core/init/local_storage/shared_storage_service.dart';
+import '../../core/init/network/network_service.dart';
+import '../login/view/login_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -27,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
 
   _navigateToLoginView() async {
     await Future.delayed(const Duration(milliseconds: 5500), () {
-      context.navigateToPage(const Anasayfa());
+      context.navigateToPage(const LoginView());
     });
   }
 
