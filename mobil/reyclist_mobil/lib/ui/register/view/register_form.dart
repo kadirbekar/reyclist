@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:reyclist_mobil/core/constants/icon_constants.dart';
-import 'package:reyclist_mobil/core/constants/widget_size_constant.dart';
 
-import 'package:reyclist_mobil/core/mixin/form_validation_mixin.dart';
-
+import '../../../core/constants/icon_constants.dart';
+import '../../../core/constants/widget_size_constant.dart';
 import '../../../core/mixin/form_validation_mixin.dart';
 import '../../../core/widgets/button/box_button.dart';
 import '../../../core/widgets/circle_avatar_icon/circle_avatar_icon.dart';
 import '../../../core/widgets/inputs/form_input.dart';
-import '../../../core/widgets/text/have_account.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({Key? key}) : super(key: key);
@@ -83,7 +80,6 @@ class _RegisterFormState extends State<RegisterForm> with FormValidationMixin {
             },
           ),
           SizedBox(height: WidgetSizeConstant.xLarge * 2),
-          const HaveAccount(),
         ],
       ),
     );

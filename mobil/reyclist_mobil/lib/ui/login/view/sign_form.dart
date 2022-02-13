@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:reyclist_mobil/core/constants/icon_constants.dart';
-import 'package:reyclist_mobil/core/constants/widget_size_constant.dart';
-import 'package:reyclist_mobil/core/mixin/form_validation_mixin.dart';
-import 'package:reyclist_mobil/core/widgets/button/box_button.dart';
-import 'package:reyclist_mobil/core/widgets/inputs/form_input.dart';
 import 'package:kartal/kartal.dart';
 
+import '../../../core/constants/icon_constants.dart';
+import '../../../core/constants/widget_size_constant.dart';
+import '../../../core/mixin/form_validation_mixin.dart';
+import '../../../core/widgets/button/box_button.dart';
+import '../../../core/widgets/inputs/form_input.dart';
+import '../../../product/color/app_colors.dart';
+import '../../../product/text/app_strings.dart';
 import '../../forgot_password/forgot_password_view.dart';
 
 class SignForm extends StatefulWidget {
@@ -60,14 +62,14 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
             Row(
               children: [
                 _rememberMe,
-                const Text("Remember me"),
+                const Text(TextConstants.loginRememberME),
                 const Spacer(),
                 _forgotPass,
               ],
             ),
             SizedBox(height: WidgetSizeConstant.xLarge * 2),
             BoxButton(
-              title: 'Giriş Yap',
+              title: TextConstants.loginButton,
               onTap: () async {
                 if (_formKey.currentState?.validate() ?? false) {}
               },
@@ -84,7 +86,7 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
       controller: _passwordController,
       password: isObSecure,
       validator: (value) => checkPassword(value),
-      placeholder: 'Şifre',
+      placeholder: TextConstants.password,
       trailing: Icon(isObSecure ? Icons.visibility : Icons.visibility_off),
       leading: IconConstants.lock,
       trailingTapped: obscureTap,
@@ -94,7 +96,7 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
   BoxInputField _emailFormField() {
     return BoxInputField(
       controller: _emailController,
-      placeholder: 'E-posta',
+      placeholder: TextConstants.eMail,
       validator: (value) => checkEmail(value),
       leading: IconConstants.email,
     );
@@ -102,7 +104,7 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
 
   Widget get _rememberMe => Checkbox(
         value: remember,
-        activeColor: Colors.black,
+        activeColor: AppColor.appBlackColorTheme,
         onChanged: (value) {
           setState(() {
             remember = value ?? false;
@@ -113,7 +115,7 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
   Widget get _forgotPass => GestureDetector(
         onTap: () => context.navigateToPage(const ForgotPasswordView()),
         child: const Text(
-          "Şifremi Unuttum",
+          TextConstants.forgotPassword,
           style: TextStyle(decoration: TextDecoration.underline),
         ),
       );

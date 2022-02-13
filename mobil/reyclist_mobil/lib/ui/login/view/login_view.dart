@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:reyclist_mobil/core/init/design/color.dart';
-import 'package:reyclist_mobil/core/init/design/text_style.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../core/widgets/logo/logo.dart';
-import 'sign_form.dart';
+import '../../../product/text/app_strings.dart';
 import 'no_account_text.dart';
+import 'sign_form.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -17,16 +17,12 @@ class LoginView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Center(
             child: SingleChildScrollView(
-                child: Column(children: const [
+                child: Column(children: [
               Logo(),
-              SizedBox(height: 20),
-              Text(
-                'Recylist',
-                style: headlineStyle,
-              ),
-              SizedBox(height: 8),
+              Text(TextConstants.loginAppDescription,
+                  style: context.textTheme.headline3?.copyWith(fontWeight: FontWeight.bold)),
+              SizedBox(height: context.dynamicHeight(0.02)),
               SignForm(),
-              SizedBox(height: 20),
               NoAccountText(),
             ])),
           ),
