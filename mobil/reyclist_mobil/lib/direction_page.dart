@@ -4,14 +4,14 @@ import 'package:reyclist_mobil/ui/QR/qr.dart';
 import 'package:reyclist_mobil/ui/home/home.dart';
 import 'package:reyclist_mobil/ui/map/map.dart';
 
-class Anasayfa extends StatefulWidget {
-  const Anasayfa({Key? key}) : super(key: key);
+class DirectionPage extends StatefulWidget {
+  const DirectionPage({Key? key}) : super(key: key);
 
   @override
-  _AnasayfaState createState() => _AnasayfaState();
+  _DirectionPageState createState() => _DirectionPageState();
 }
 
-class _AnasayfaState extends State<Anasayfa> {
+class _DirectionPageState extends State<DirectionPage> {
   int _aktifNo = 0;
   late PageController sayfaKumandasi;
 
@@ -41,7 +41,7 @@ class _AnasayfaState extends State<Anasayfa> {
         children: const [
           HomePage(),
           MapPage(),
-          qrScanPage(),
+          QrScanPage(),
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(

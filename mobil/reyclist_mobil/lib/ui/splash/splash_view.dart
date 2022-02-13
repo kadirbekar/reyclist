@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:reyclist_mobil/core/constants/image_constant.dart';
+import 'package:reyclist_mobil/direction_page.dart';
 import 'package:reyclist_mobil/core/init/local_storage/shared_storage_service.dart';
 import 'package:reyclist_mobil/core/init/network/network_service.dart';
 
@@ -11,7 +13,6 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  String image = "assets/images/splash.png";
   @override
   void initState() {
     super.initState();
@@ -27,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
 
   _navigateToLoginView() async {
     await Future.delayed(const Duration(milliseconds: 5500), () {
-      context.navigateToPage(const Anasayfa());
+      context.navigateToPage(const DirectionPage());
     });
   }
 
@@ -38,7 +39,7 @@ class _SplashViewState extends State<SplashView> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(
-            image,
+            ImageConstant.imagePath,
             fit: BoxFit.cover,
           ),
           // const Center(
