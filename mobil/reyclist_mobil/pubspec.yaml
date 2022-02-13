@@ -17,11 +17,9 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   
-
   #state management
   provider: ^6.0.2
   
-
   #network
   vexana: ^2.6.0
 
@@ -29,18 +27,25 @@ dependencies:
   flutter_svg: ^1.0.3
   lottie: ^1.2.1
   kartal: ^2.3.1
+  json_serializable: any
+  json_annotation: ^4.3.0
 
   #security
   flutter_secure_storage: ^5.0.2
 
+  #storage
+  shared_preferences: ^2.0.13
+
   #map
   google_maps_flutter: ^2.1.1
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^1.0.0
+  build_runner: ^2.1.7
 
 
 flutter:

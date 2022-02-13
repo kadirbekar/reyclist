@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(top: 5, left: 10),
               child: Row(
-                children: [
+                children: const [
                   Text(
                     "Coupons",
                     textAlign: TextAlign.start,
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         height: 60.0,
-        items: <Icon>[
+        items: const [
           Icon(Icons.home, size: 30),
           Icon(Icons.map, size: 30),
           Icon(Icons.qr_code, size: 30),

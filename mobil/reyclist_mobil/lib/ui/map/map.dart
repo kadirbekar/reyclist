@@ -35,7 +35,7 @@ class _mapPageState extends State<mapPage> {
         )),
         bottomNavigationBar: CurvedNavigationBar(
           height: 60.0,
-          items: <Icon>[
+          items: const [
             Icon(Icons.home, size: 30),
             Icon(Icons.map, size: 30),
             Icon(Icons.qr_code, size: 30),
@@ -56,8 +56,8 @@ class _mapPageState extends State<mapPage> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               ListTile(
-                leading: new Icon(Icons.replay_circle_filled),
-                title: new Text('Etimesut Geri Dönüşüm Tesisi'),
+                leading: const Icon(Icons.replay_circle_filled),
+                title: const Text('Etimesut Geri Dönüşüm Tesisi'),
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -65,11 +65,11 @@ class _mapPageState extends State<mapPage> {
               const ListTile(
                 leading: Text("Plastic"),
               ),
-              ListTile(
-                leading: const Text("Glass"),
+              const ListTile(
+                leading: Text("Glass"),
               ),
-              ListTile(
-                leading: const Text("Paper"),
+              const ListTile(
+                leading: Text("Paper"),
               ),
             ],
           );

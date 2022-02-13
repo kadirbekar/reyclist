@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:reyclist_mobil/core/init/network/network_service.dart';
+import 'package:reyclist_mobil/ui/login/login_view_model/login_view_model.dart';
+import 'package:reyclist_mobil/ui/login/model/login_model.dart';
+import 'package:reyclist_mobil/ui/login/service/login_service.dart';
+import 'package:reyclist_mobil/ui/login/view/login_view.dart';
 
 import '../../../core/constants/icon_constants.dart';
 import '../../../core/constants/widget_size_constant.dart';
@@ -23,20 +28,22 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
   bool _isObscure = true;
   bool remember = false;
 
-  late final TextEditingController? _emailController;
-  late final TextEditingController? _passwordController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+  late final LoginViewModel _loginViewModel;
 
   @override
   void initState() {
     super.initState();
+    _loginViewModel = LoginViewModel(manager: NetworkSettings.instance.networkManager);
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _emailController?.dispose();
-    _passwordController?.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -71,7 +78,14 @@ class _SignFormState extends State<SignForm> with FormValidationMixin {
             BoxButton(
               title: TextConstants.loginButton,
               onTap: () async {
-                if (_formKey.currentState?.validate() ?? false) {}
+                if (_formKey.currentState?.validate() ?? false) {
+                  final LoginModel model = LoginModel(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  );
+                  final response = await _loginViewModel.login(model);
+                  if (response != null) {}
+                }
               },
             )
           ],
