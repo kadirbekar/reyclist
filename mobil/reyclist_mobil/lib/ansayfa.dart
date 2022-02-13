@@ -53,7 +53,7 @@ class _AnasayfaState extends State<Anasayfa> {
         ],
         color: Colors.white,
         buttonBackgroundColor: Colors.white,
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.green.shade300,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 600),
         onTap: (selectPage) {

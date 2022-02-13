@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:reyclist_mobil/core/widgets/button/box_button.dart';
+import 'package:reyclist_mobil/core/widgets/text/box_text.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _MapPageState extends State<MapPage> {
         children: [
           GoogleMap(
             onMapCreated: _onMapCreated,
-            initialCameraPosition: CameraPosition(target: _center),
+            initialCameraPosition: CameraPosition(target: _center, zoom: 12.0),
             onTap: (position) {
               _showInformationCard(context);
             },
@@ -83,11 +84,9 @@ class _MapPageState extends State<MapPage> {
     return Expanded(
       flex: 2,
       child: ListView(
-        children: const [
-          Text(
-            "aplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojgjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeoj",
-            style: TextStyle(fontSize: 17),
-          ),
+        children: [
+          BoxText.body(
+              "aplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojgjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeojaplğaldeğapldogrpkerogkerogpeogjeporwğkfpğwfeğwpkorgeğrgoeoj"),
         ],
       ),
     );
