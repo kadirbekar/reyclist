@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:reyclist_mobil/ui/login/view/login_view.dart';
+import 'package:reyclist_mobil/ansayfa.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -10,6 +10,7 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  String image = "assets/images/splash.png";
   @override
   void initState() {
     super.initState();
@@ -17,16 +18,27 @@ class _SplashViewState extends State<SplashView> {
   }
 
   _navigateToLoginView() async {
-    await Future.delayed(const Duration(milliseconds: 1500), () {
-      context.navigateToPage(const LoginView());
+    await Future.delayed(const Duration(milliseconds: 5500), () {
+      context.navigateToPage(const Anasayfa());
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Splash View"),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Image.asset(
+            image,
+            fit: BoxFit.cover,
+          ),
+          // const Center(
+          //   child: CircularProgressIndicator(
+          //     backgroundColor: Colors.amber,
+          //   ),
+          // ),
+        ],
       ),
     );
   }
