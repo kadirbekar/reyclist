@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:reyclist_mobil/ansayfa.dart';
+import 'package:provider/provider.dart';
+import 'package:reyclist_mobil/ui/login/login_view_model/login_view_model.dart';
+import 'package:reyclist_mobil/ui/login/model/user_response_model.dart';
 
+import '../../ansayfa.dart';
+import '../../core/constants/padding_constants.dart';
 import '../../core/init/local_storage/shared_storage_service.dart';
 import '../../core/init/network/network_service.dart';
 import '../login/view/login_view.dart';
@@ -15,45 +19,59 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   String image = "assets/images/splash.png";
+
   @override
   void initState() {
     super.initState();
-    _initializeServices().whenComplete(() async {
-      if (await SharedStorageService.instance.readBoolValue(SharedStorage.login.name)) {
-        _navigateToPage(const MainPage());
-      } else {
-        _navigateToPage(const LoginView());
-      }
-    });
+    _initializeServices();
   }
 
   Future<void> _initializeServices() async {
-    NetworkSettings.instance.initializeNetworkSettings();
     await SharedStorageService.instance.initializeSharedPreferences();
+    NetworkSettings.instance.initializeNetworkSettings();
+    await _checkUserLoginStatus();
   }
 
-  _navigateToPage(Widget page) async {
-    await Future.delayed(const Duration(milliseconds: 5500), () {
-      context.navigateToPage(page);
-    });
+  Future<void> _checkUserLoginStatus() async {
+    if (await SharedStorageService.instance.readBoolValue(SharedEnum.login.name)) {
+      context.read<UserContext>().setUserDataFromLocalStorage(SharedStorageService.instance.readModel<UserResponseModel>(SharedEnum.user.name));
+      _navigateToPage(const MainPage());
+    } else {
+      _navigateToPage(const LoginView());
+    }
   }
+
+  _navigateToPage(Widget page) => context.navigateToPage(page);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Image.asset(
-            image,
-            fit: BoxFit.cover,
-          ),
-          // const Center(
-          //   child: CircularProgressIndicator(
-          //     backgroundColor: Colors.amber,
-          //   ),
-          // ),
-        ],
+      body: SafeArea(
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          fit: StackFit.loose,
+          children: [
+            _splashImage(),
+            _circularProgressIndicator(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Image _splashImage() {
+    return Image.asset(
+      image,
+      fit: BoxFit.fitWidth,
+      width: double.infinity,
+    );
+  }
+
+  Positioned _circularProgressIndicator() {
+    return Positioned(
+      child: Padding(
+        padding: PagePadding.all(),
+        child: const CircularProgressIndicator(),
       ),
     );
   }

@@ -29,4 +29,10 @@ class SecureStorageService extends ILocalStorageService {
   Future<bool> readBoolValue(String key) async {
     return true;
   }
+
+  @override
+  T? readModel<T>(String key) {
+    // TODO: implement readModel
+    throw UnimplementedError();
+  }
 }

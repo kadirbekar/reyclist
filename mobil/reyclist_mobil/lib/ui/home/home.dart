@@ -1,5 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:reyclist_mobil/ui/login/login_view_model/login_view_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -42,8 +44,8 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: Column(
                     children: [
-                      const Text(
-                        "Evin Gülcan",
+                      Text(
+                        "${context.read<UserContext>().user?.name} ${context.read<UserContext>().user?.surname}",
                         style: TextStyle(fontSize: 20),
                       ),
                       const SizedBox(
